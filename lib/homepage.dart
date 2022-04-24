@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:sorted_list/sorted_list.dart';
 
 void main() => runApp(const Homepage());
 
@@ -52,73 +53,77 @@ class _BitcoinState extends State<Bitcoin> {
   String description2 = "";
   var simplify, unit, value, type, result, bitcoin;
 
-  List<String> cryptoList = [
-    "Bitcoin",
-    "Ether",
-    "Litecoin",
-    "Bitcoin Cash",
-    "Binance Coin",
-    "EOS",
-    "XRP",
-    "Lumens",
-    "Chainlink",
-    "Polkadot",
-    "Yearn.finance",
-    "US Dollar",
-    "United Arab Emirates Dirham",
-    "Argentine Peso",
-    "Australian Dollar",
-    "Bangladeshi Taka",
-    "Bahraini Dinar",
-    "Bermudian Dollar",
-    "Brazil Real",
-    "Canadian Dollar",
-    "Swiss Franc",
-    "Chilean Peso",
-    "Chinese Yuan",
-    "Czech Koruna",
-    "Danish Krone",
-    "Euro",
-    "British Pound Sterling",
-    "Hong Kong Dollar",
-    "Hungarian Forint",
-    "Indonesian Rupiah",
-    "Israeli New Shekel",
-    "Indian Rupee",
-    "Japanese Yen",
-    "South Korean Won",
-    "Kuwaiti Dinar",
-    "Sri Lankan Rupee",
-    "Burmese Kyat",
-    "Mexican Peso",
-    "Malaysian Ringgit",
-    "Nigerian Naira",
-    "Norwegian Krone",
-    "New Zealand Dollar",
-    "Philippine Peso",
-    "Pakistani Rupee",
-    "Polish Zloty",
-    "Russian Ruble",
-    "Saudi Riyal",
-    "Swedish Krona",
-    "Singapore Dollar",
-    "Thai Baht",
-    "Turkish Lira",
-    "New Taiwan Dollar",
-    "Ukrainian hryvnia",
-    "Venezuelan bolívar fuerte",
-    "Vietnamese đồng",
-    "South African Rand",
-    "IMF Special Drawing Rights",
-    "Silver - Troy Ounce",
-    "Gold - Troy Ounce",
-    "Bits",
-    "Satoshi",
-  ];
-  // var sortedList = cryptoList.SortedList<String>((a, b) => a.compareTo(b));
-
   @override
   Widget build(BuildContext context) {
+    List<String> cryptoList = [
+      "Bitcoin",
+      "Ether",
+      "Litecoin",
+      "Bitcoin Cash",
+      "Binance Coin",
+      "EOS",
+      "XRP",
+      "Lumens",
+      "Chainlink",
+      "Polkadot",
+      "Yearn.finance",
+      "US Dollar",
+      "United Arab Emirates Dirham",
+      "Argentine Peso",
+      "Australian Dollar",
+      "Bangladeshi Taka",
+      "Bahraini Dinar",
+      "Bermudian Dollar",
+      "Brazil Real",
+      "Canadian Dollar",
+      "Swiss Franc",
+      "Chilean Peso",
+      "Chinese Yuan",
+      "Czech Koruna",
+      "Danish Krone",
+      "Euro",
+      "British Pound Sterling",
+      "Hong Kong Dollar",
+      "Hungarian Forint",
+      "Indonesian Rupiah",
+      "Israeli New Shekel",
+      "Indian Rupee",
+      "Japanese Yen",
+      "South Korean Won",
+      "Kuwaiti Dinar",
+      "Sri Lankan Rupee",
+      "Burmese Kyat",
+      "Mexican Peso",
+      "Malaysian Ringgit",
+      "Nigerian Naira",
+      "Norwegian Krone",
+      "New Zealand Dollar",
+      "Philippine Peso",
+      "Pakistani Rupee",
+      "Polish Zloty",
+      "Russian Ruble",
+      "Saudi Riyal",
+      "Swedish Krona",
+      "Singapore Dollar",
+      "Thai Baht",
+      "Turkish Lira",
+      "New Taiwan Dollar",
+      "Ukrainian hryvnia",
+      "Venezuelan bolívar fuerte",
+      "Vietnamese đồng",
+      "South African Rand",
+      "IMF Special Drawing Rights",
+      "Silver - Troy Ounce",
+      "Gold - Troy Ounce",
+      "Bits",
+      "Satoshi",
+    ];
+
+    cryptoList.sort((a, b) {
+      //sorting in ascending order
+      return a.compareTo(b);
+    });
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Center(
@@ -214,7 +219,7 @@ class _BitcoinState extends State<Bitcoin> {
         simplify = "eth";
         break;
 
-      case "Litcoin":
+      case "Litecoin":
         simplify = "ltc";
         break;
 
@@ -458,7 +463,7 @@ class _BitcoinState extends State<Bitcoin> {
 
       bitcoin = double.parse(amountEditingController.text);
       result = bitcoin * value;
-      var roundoff = result.toStringAsPrecision(4);
+      var roundoff = result.toStringAsFixed(3);
 
       setState(() {
         description1 = amountEditingController.text + " Bitcoin Value =";
