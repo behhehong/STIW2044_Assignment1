@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:sorted_list/sorted_list.dart';
 
 void main() => runApp(const Homepage());
 
@@ -18,7 +17,7 @@ class Homepage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 163, 19, 189),
+          backgroundColor: const Color(0xFF03A9F4),
           title: const Text('Bitcoin Converter'),
         ),
         body: SingleChildScrollView(
@@ -178,7 +177,7 @@ class _BitcoinState extends State<Bitcoin> {
                 onPressed: loadCurrency,
                 child: const Text("Convert"),
                 style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 163, 19, 189))),
+                    primary: const Color(0xFF03A9F4))),
             const SizedBox(height: 50),
             Text(
               description1,
